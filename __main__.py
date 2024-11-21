@@ -36,7 +36,12 @@ def write_to_csv(exchange_rate):
     file_path = "usd_try.csv"
 
     if os.path.exists(file_path):
-        df.to_csv(file_path, mode='a', header=False, index=False)
+        existing_df = pd.read_csv(file_path)
+        if today in existing_df["Tarih"].values:
+            existing_df.loc[existing_df["Tarih"] == today, "USD/TRY"] = exchange_rate
+        else:
+            existing_df = existing_df.append(df, ignore_index=True)
+        existing_df.to_csv(file_path, mode='w', header=True, index=False)
     else:
         df.to_csv(file_path, mode='w', header=True, index=False)
 

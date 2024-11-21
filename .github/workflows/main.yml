@@ -26,4 +26,10 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Günlük kur güncellemesi"
-          file_pattern: usd_try.csv  
+          file_pattern: usd_try.csv
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git push
