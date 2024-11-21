@@ -2,7 +2,6 @@ name: Update Exchange Rate
 
 on:
   schedule:
-    # - cron: '0 9 * * *'
     - cron: '*/2 * * * *'
 
 jobs:
@@ -10,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -20,3 +21,8 @@ jobs:
         env:
           TCMB_API_KEY: ${{ secrets.TCMB_API_KEY }}
         run: python __main__.py
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Günlük kur güncellemesi"
+          file_pattern: usd_try.csv  
