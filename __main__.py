@@ -40,7 +40,7 @@ def write_to_csv(exchange_rate):
         if today in existing_df["Tarih"].values:
             existing_df.loc[existing_df["Tarih"] == today, "USD/TRY"] = exchange_rate
         else:
-            existing_df = existing_df.append(df, ignore_index=True)
+            existing_df = pd.concat([existing_df, df], ignore_index=True)
         existing_df.to_csv(file_path, mode='w', header=True, index=False)
     else:
         df.to_csv(file_path, mode='w', header=True, index=False)
