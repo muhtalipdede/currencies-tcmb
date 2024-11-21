@@ -1,0 +1,22 @@
+name: Update Exchange Rate
+
+on:
+  schedule:
+    # - cron: '0 9 * * *'
+    - cron: '* * * * *'
+
+jobs:
+  update-exchange-rate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run script
+        env:
+          TCMB_API_KEY: ${{ secrets.TCMB_API_KEY }}
+        run: python __main__.py
