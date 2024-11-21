@@ -3,7 +3,7 @@ name: Update Exchange Rate
 on:
   schedule:
     # - cron: '0 9 * * *'
-    - cron: '* * * * *'
+    - cron: '*/2 * * * *'
 
 jobs:
   update-exchange-rate:
