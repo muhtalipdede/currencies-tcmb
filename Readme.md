@@ -1,5 +1,7 @@
 # Currencies with TCMB
 
+![Image](/usd_try.png)
+
 ## Create a virtual environment
 ```bash
 python3 -m venv venv
@@ -17,7 +19,7 @@ pip install -r requirements.txt
 
 ## Run the service
 ```bash
-python lstm.py
+python __main__.py
 ```
 
 ## Deactivate the virtual environment
