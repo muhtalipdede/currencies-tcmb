@@ -82,7 +82,7 @@ def plot_all_csv_files(file_list):
 series_list = ["TP.DK.USD.S.YTL", "TP.DK.USD.A.YTL", "TP.DK.EUR.S.YTL", "TP.DK.EUR.A.YTL", "TP.DK.GBP.S.YTL", "TP.DK.GBP.A.YTL", "TP.DK.CHF.S.YTL", "TP.DK.CHF.A.YTL", "TP.DK.JPY.S.YTL", "TP.DK.JPY.A.YTL"]
 def main():
     end_date = datetime.date.today().strftime("%d-%m-%Y")
-    start_date = datetime.date.today() - datetime.timedelta(days=1000)
+    start_date = datetime.date.today() - datetime.timedelta(days=3000)
     start_date = start_date.strftime("%d-%m-%Y")
     file_list = []
     for series in series_list:
